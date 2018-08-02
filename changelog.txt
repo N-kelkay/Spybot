@@ -1,0 +1,97 @@
+Stats
+- Ratio of links to messages
+- Add channel specific stats (top 5 users, most used emoji, average char length, number of messages, percent of server)
+- Graph of total messages sent in a channel over time
+
+Commands
+- Per person, customizable options for !timeout (what they want to be shown at the final pm). Options such as:
+	* Progress bar for how close your timeout is to being done (would require a pm to be sent immediately)
+	* Only locking you out of certain channels
+	* Ignoring certain channels in the "activity while you were gone" message
+	* Tells you how many messages were sent while you were gone
+- !status command to double check all channels and roles and see if anything has changed (particularly in relation to the DB, delete or add as necessary)
+	
+Features
+- Carry over !timeout through resets
+
+Bugs/Polish
+- Fix DBFunctions with generic db method (almost there, just a couple things to iron out)
+- Polish the changelog upload; delimit and add "roadmap" at the top
+- Fix !help embed send to work instead of !help embed_send
+
+```
+5/31/2018 2.0.1
+- Fixed embed commands not working
+```
+5/30/2018 2.0.0 Back in Business
+(We're back, baby!)
+- New !options command controllable via reactions, almost completely polished for indefinite expansion
+- Introduced ExecutableCommand, every single command now gets its own class, client side results happen through its .execute method
+- !logHistory command polished - full embed support, no more text spam, loads messages in chunks
+- new !status command runs a system check and makes appropriate db modifications
+- Complete restructure of package system (not super happy with it still)
+- Chainable PrivateEmbedBuilder class introduced for easier expansion and manipulation of the !embed commands
+- !embed commands are now user specific; you can only modify your own embed
+```
+5/30/2018 2.0.0 Back in Business (CONT.)
+- Progress (where applicable) now displays as a [####     ] 40% style bar instead of a flat percentage
+- Added an easter egg type feature :)
+- Changelog command now only displays the last two updates, full changelog uploaded as a txt
+- Users automatically given magnet nerd and removed from scrub when they start typing if they had scrub
+- Added !emoji command for creating emoji from attachment
+- Made SnowChecker a proper class
+- Officially renamed to spybot
+- Generic DB helper function added for maps which count the number of times something happened with a condition
+- Stop and Start snow commands removed
+```
+4/29/2018 1.7.0 Timeout Polish
+- Timeout class introduced backend
+- Users now told which channels have had activity since their timeout
+- !pause works properly now for debugging
+- Generic DB helper function added for double rs.get maps
+- Added full command list for !commands or a message starting with !help that isn't any other command
+- Fixed double word commands not being recognised
+```
+4/29/2018 1.6.0 Update Me
+- Anyone can now use !updateMe to recieve a pm every update, but only those with special permission will recieve source code as well
+- Arg added to !updateme, 3 to be pmd for all updates, 2 for just major and minor, and 1 for just major. Use the command with no arg to be taken off the list
+- Added all missing help messages
+- Removed embed_build, functionality moved to embed_send
+```
+4/20/2018 1.5.0 Color Roles
+- !role fixed to work as intended. All color roles wiped, users must go through the command to get them back
+- Help message added for !role and !changelog
+- Added "playing..." status message
+- Added javadocs for the actual classes
+```
+4/19/2018 1.4.0 Stats Speed Increase, DB Polish
+- DBFunctions uses COUNT(*) to get the number of rows instead of incrementing while iterating through every possible row.
+ Roughly 200% speed boost when retrieving global stats from previous
+- Added generic GET helper method in DBFunctions, cleaned up get functions there. Still need to do map ones
+- Kate added to list of users who can recieve source code
+- Documentation added to helper functions in DBFunctions
+```
+4/18/2018 1.3.0 Backend Improvements
+- Cleaned up DBFunctions a *ton*, nice helper functions to reduce repeated code
+- Command class and CommandType enum introduced for easier navigation of commands
+- Command interpretation handeled through a massive switch rather than a multitiude of ifs
+- Current version automatically updated on !update
+- Fixed bug with empty space appearing at the beginning of server wide graph
+- Removed obsolete !history and !parseHour commands
+- Many small, minor polishes throughout the code
+```
+4/17/2018 1.2.0 Source Code Distribution
+- Access to !updateMe given to Sam, Simon, and Daphne who can recieve the source code on every update
+- Added !update (Author only!) to push an update and trigger !updateMe. Changelog must still be edited manually
+```
+4/16/2018 1.1.0 New Users
+- New members assigned Magnet Nerd on join
+- New members dmd to ask about their real life name, pin and db updated accordingly with their next pm
+- Welcome message tweaked
+- WaitingState introduced backend
+- Added !pause for debugging multiple instances
+- Added !changelog which reads from changelog.txt. Includes roadmap
+```
+4/16/2018 1.0.0 Official Release
+- First official release, bot is both useful and usable
+```
