@@ -32,8 +32,8 @@ public class SnowChecker {
 
 		new Thread(() -> {
 			String website = "http://www.montgomeryschoolsmd.org/emergency/";
-			TextChannel dynolog = jda.getTextChannelById("390299661006667776");
-			TextChannel general = jda.getTextChannelById("278212358483214337");
+			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_DYNOLOGS);
+			TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
 
 			BotUtils.sendMessage(dynolog, "Starting up the delay/closure checker...");
 
