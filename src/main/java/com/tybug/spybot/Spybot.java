@@ -66,6 +66,7 @@ public class Spybot extends ListenerAdapter
 		
 		BufferedReader br;
 		String token = null;
+		
 		try {
 			br = new BufferedReader(new FileReader("token.txt"));
 			token = br.readLine();
