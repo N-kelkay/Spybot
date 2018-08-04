@@ -12,3 +12,4 @@
 /token.txt/
 /.classpath
 /.project
+/**/*.class
