@@ -35,6 +35,13 @@ dependencies {
 
 
 
+defaultTasks 'copyDependencies'
+
+task copyDependencies(type: Copy) {
+   from configurations.runtime
+   into 'dependencies'
+}
+
 allprojects {
 		repositories {
 			maven { url 'https://jitpack.io' }
