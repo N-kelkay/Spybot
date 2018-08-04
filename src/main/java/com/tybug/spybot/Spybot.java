@@ -1,6 +1,9 @@
 package com.tybug.spybot;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.security.auth.login.LoginException;
@@ -60,11 +63,21 @@ public class Spybot extends ListenerAdapter
 	public static boolean pause = false;
 
 	public static void main(String[] args) {
-
+		
+		BufferedReader br;
+		String token = null;
+		try {
+			br = new BufferedReader(new FileReader("token.txt"));
+			token = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		try
 		{
 			JDA jda = new JDABuilder(AccountType.BOT) //boot up the bot instance
-					.setToken("MzY1NjA5ODQxMTM1MzIxMDk0.DQ9m7A.ITeHiTVfUBnvtyXoDMljoMoeJ3w") //pass the token (effectively the password)
+					.setToken(token) //pass the token (effectively the password)
 					.addEventListener(new Spybot()) //for messageRecieved etc
 					.setGame(Game.playing("Created by Liam")) //set "Playing..." display message
 					.buildBlocking();  //build the whole thing, blocking guarantees it will be completely loaded vs async which does not
