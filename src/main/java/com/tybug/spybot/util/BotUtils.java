@@ -246,7 +246,7 @@ public class BotUtils {
 	 * @param message The message to add the check emoji to
 	 */
 	public static void check(Message message) {
-		message.addReaction(message.getJDA().getEmoteById(SpybotUtils.EMOTE_CHECK)).queue(); //add the checkmark
+		message.addReaction(SpybotUtils.EMOTE_CHECK).queue(); //add the checkmark
 	}
 
 
