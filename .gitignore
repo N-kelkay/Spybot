@@ -9,7 +9,6 @@
 /messages.txt/
 /settings.gradle/
 /build/
-/token.txt/
 /.classpath
 /.project
 /**/*.class
