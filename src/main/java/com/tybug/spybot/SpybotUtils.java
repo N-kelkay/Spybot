@@ -52,49 +52,50 @@ public class SpybotUtils {
 	public static final String BOT_PREFIX = "!";
 
 	//Guilds
-	public static final String GUILD_BLAIR = "278212358483214337";
+	public static final String GUILD_BLAIR = "474719482036748295";
 
 	//TextChannels
-	public static final String CHANNEL_GENERAL = "278212358483214337";
-	public static final String CHANNEL_MEMES = "278309590112927745";
-	public static final String CHANNEL_BOOKS = "322549411618095105";
-	public static final String CHANNEL_GAMING = "321002143110660097";
-	public static final String CHANNEL_BOTS = "278262935522902017";
-	public static final String CHANNEL_MUSIC = "387795750408552458";
-	public static final String CHANNEL_RULES = "389948548038262784";
-	public static final String CHANNEL_CREATIVECORNER = "391991742661918720";
-	public static final String CHANNEL_DYNOLOGS = "390299661006667776";
-	public static final String CHANNEL_TEST = "427189433796657161";
-	public static final String CHANNEL_HOMEWORK = "309834829669859328";
-	public static final String CHANNEL_HOMEWORK2 = "278229579976409090";
-	public static final String CHANNEL_RESOURCES = "309467813658099733";
-	public static final String CHANNEL_CODING = "355126584321114123";
+	public static final String CHANNEL_GENERAL = "474719482149863424";
+	public static final String CHANNEL_MEMES = "474720669519577104";
+	public static final String CHANNEL_MUSIC = "474727961203834892";
+	public static final String CHANNEL_ANIME = "474721173167407107";
+	public static final String CHANNEL_BOOKS = "474722177225064477";
+	public static final String CHANNEL_GAMING = "474721555889520643";
+	public static final String CHANNEL_CREATIVECORNER = "474721503963774988";
+	public static final String CHANNEL_BOTS = "474722046786404371";
+	public static final String CHANNEL_BOTS2 = "474722140667641857";
+	public static final String CHANNEL_DYNOLOGS = "474998712041472000";
+	
+	public static final String CHANNEL_HOMEWORK = "474721513539502143";
+	public static final String CHANNEL_HOMEWORK2 = "474721524440498177";
+	public static final String CHANNEL_RESOURCES = "474723314401542175";
+	public static final String CHANNEL_CODING = "474721485102120985";
 
 	//VoiceChannels
-	public static final String VOICE_HOMEWORK = "278215245737230337";
-	public static final String VOICE_OTHER = "368779539742064640";
+	public static final String VOICE_HOMEWORK = "474721143446700032";
+	public static final String VOICE_OTHER = "474719482149863426";
 
 
 
 
 	//Roles
-	public static final String ROLE_MOD = "278572525842071552";
-	public static final String ROLE_NERD = "278265107669188608";
+	public static final String ROLE_MOD = "474720248612782080";
+	public static final String ROLE_NERD = "474724055778328587";
 	public static final String ROLE_BOT = "389581209472335887";
-	public static final String ROLE_SCRUB = "389580914927075338";
+	public static final String ROLE_SCRUB = "474724542602805258";
 	public static final String ROLE_DOING_HOMEWORK = "431908409089064962";
 	public static final String ROLE_SNOW = "425818089251143690";
 	public static final String ROLE_FRESHIE = "420785461401878529";
 
 
 	//Emotes
-	public static final String EMOTE_CHECK = "388657600419594240";
+	public static final String EMOTE_CHECK = "\u2705";
 
 	//Emojis
 	public static final String EMOJI_WARNING = "\u26A0";
 	
 	//Messages
-	public static final String MESSAGE_NAMES = "430213531686666251";
+	public static final String MESSAGE_NAMES = "474998097550770176";
 
 
 
