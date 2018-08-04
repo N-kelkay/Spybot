@@ -10,3 +10,5 @@
 /gradlew.bat/
 /messages.txt/
 /settings.gradle/
+/build/
+/token.txt/
