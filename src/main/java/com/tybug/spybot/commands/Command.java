@@ -45,7 +45,7 @@ public class Command {
 		this.message = m;
 		this.user = event.getAuthor();
 		this.member = event.getMember();
-		this.command = getCommandType(m.getContentDisplay());
+		this.command = getCommandType(m.getContentRaw());
 		
 		if(event.isFromType(ChannelType.TEXT)) {
 			this.clearance = SpybotUtils.getClearance(member);
