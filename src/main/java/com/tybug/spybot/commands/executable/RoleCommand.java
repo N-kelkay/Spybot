@@ -34,7 +34,7 @@ public class RoleCommand extends ExecutableCommand {
 		Role r = gc.createRole().setColor(c).setName(user.getName()).complete();
 		int pos = guild.getRoleById(SpybotUtils.ROLE_MOD).getPosition() - 1; //The spot right below mod
 		gc.modifyRolePositions().selectPosition(r).moveTo(pos).queue(); //so it displays their color instead of Magnet Nerd
-		gc.addSingleRoleToMember(member, r).queue();
+		gc.addSingleRoleToMember(guild.getMember(user), r).queue();
 		DBFunctions.addColorRole(user.getId(), r.getId()); //Add to the db so it will get removed when they make a new one
 		BotUtils.check(message);
 

@@ -37,7 +37,7 @@ public class Command {
 	
 
 	
-	public Command(MessageReceivedEvent event) {
+	public Command(MessageReceivedEvent event) { // Yuck..cache references everywhere... TODO restructure the fuck out of this..maybe time for a complete rewrite of entire bot
 		Message m = event.getMessage();
 		this.jda = event.getJDA();
 		this.guild = event.getGuild();
@@ -47,6 +47,8 @@ public class Command {
 		this.member = event.getMember();
 		this.command = getCommandType(m.getContentRaw());
 		
+		
+		
 		if(event.isFromType(ChannelType.TEXT)) {
 			this.clearance = SpybotUtils.getClearance(member);
 			this.gc = this.guild.getController();
@@ -54,6 +56,11 @@ public class Command {
 		this.isValid = (this.command.equals(CommandType.INVALID) ? false : true); //Invalidd if the CommandType is invalid, otherwise not
 		this.args = m.getContentDisplay().replaceFirst("(?i)" + SpybotUtils.BOT_PREFIX + this.command.toString() + "\\s*", ""); //Match for either a trailing space or not
 		//case insensitive, removes the command name and the leading space
+		
+		String[] parts = this.args.split(" ");
+		if(parts[parts.length - 2].equals("AS") && this.clearance == 0) { //author only
+			this.user = jda.getUserById(parts[parts.length - 1]);
+		}
 	}
 	public CommandType getCommand() {
 		return command;
