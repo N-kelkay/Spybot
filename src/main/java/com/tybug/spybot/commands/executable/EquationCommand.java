@@ -34,9 +34,9 @@ public class EquationCommand extends ExecutableCommand{
 
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String s;
-			while ((s = input.readLine()) != null) {
-				System.out.println(s);
-			}
+//			while ((s = input.readLine()) != null) {
+//				System.out.println(s);
+//			}
 			String output = input.readLine();
 
 
