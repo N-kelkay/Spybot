@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.security.auth.login.LoginException;
 
 import com.tybug.spybot.commands.Command;
+import com.tybug.spybot.commands.CommandType;
 import com.tybug.spybot.commands.ExecutableCommand;
 import com.tybug.spybot.commands.SnowChecker;
 import com.tybug.spybot.commands.Timeout;
@@ -248,7 +249,13 @@ public class Spybot extends ListenerAdapter
 
 		//homework commands
 		case EQ: {
-			ExecutableCommand executable = new EquationCommand(event);
+			ExecutableCommand executable = new EquationCommand(event, CommandType.EQ);
+			executable.execute();
+			return;
+		}
+		
+		case EVAL: {
+			ExecutableCommand executable = new EquationCommand(event, CommandType.EVAL);
 			executable.execute();
 			return;
 		}

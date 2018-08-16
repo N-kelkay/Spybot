@@ -12,57 +12,78 @@ import java.time.OffsetDateTime;
 
 import javax.imageio.ImageIO;
 
+import com.tybug.spybot.commands.CommandType;
 import com.tybug.spybot.commands.ExecutableCommand;
 
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class EquationCommand extends ExecutableCommand{
 
-	public EquationCommand(MessageReceivedEvent event) {
+	private CommandType type;
+
+	public EquationCommand(MessageReceivedEvent event, CommandType type) {
 		super(event);
+		this.type = type;
 	}
 
 	@Override
 	public void execute() {
 		try {
-
-			String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
-
-
-			Process p = Runtime.getRuntime().exec(commands);
-
-			BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-			String s = null;
-			StringBuilder sb = new StringBuilder();
-			while ((s = error.readLine()) != null) {
-				sb.append(s);
+			if(type.equals(CommandType.EQ)) {
+				String result = maxima(this.args);
+				latex(result);
 			}
-			if(sb.toString().length() > 0) {
-				textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
+			
+			else if(type.equals(CommandType.EVAL)) {
+				latex(args);
 			}
-
-
-			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String output = input.readLine();
-
-			commands = new String[]{"python3", "./latex.py", output};
-			p = Runtime.getRuntime().exec(commands);
-			input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-			s = input.readLine();
-
-			URL url = new URL(s);
-			BufferedImage image = ImageIO.read(url);
-			ByteArrayOutputStream os = new ByteArrayOutputStream();
-			ImageIO.write(image, "png", os);
-			InputStream is = new ByteArrayInputStream(os.toByteArray());
-			textChannel.sendFile(is, OffsetDateTime.now().toString() + ".png").queue();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 
+	}
+
+	private String maxima(String args) throws IOException {
+		String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
+
+
+		Process p = Runtime.getRuntime().exec(commands);
+		BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		String s = null;
+		StringBuilder sb = new StringBuilder();
+		while ((s = error.readLine()) != null) {
+			sb.append(s);
+		}
+		if(sb.toString().length() > 0) {
+			textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
+		}
+
+
+		BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		return input.readLine();
+	}
+
+	private void latex(String input) throws IOException {
+		String[] commands = new String[]{"python3", "./latex.py", input};
+		Process p = Runtime.getRuntime().exec(commands);
+		BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		
+		String s = null;
+		StringBuilder sb = new StringBuilder();
+		if(sb.toString().length() > 0) {
+			textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
+		}
+		
+		s = inputStream.readLine();
+
+		URL url = new URL(s);
+		BufferedImage image = ImageIO.read(url);
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		ImageIO.write(image, "png", os);
+		InputStream is = new ByteArrayInputStream(os.toByteArray());
+		textChannel.sendFile(is, OffsetDateTime.now().toString() + ".png").queue();
 	}
 
 
