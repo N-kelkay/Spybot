@@ -26,7 +26,7 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 
-			String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
+			String[] commands = new String[]{"./maxima.sh", "'print(tex1(" + args + "))$'"};
 
 
 			Process p = Runtime.getRuntime().exec(commands);
