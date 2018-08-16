@@ -87,9 +87,4 @@ public class EquationCommand extends ExecutableCommand{
 	}
 
 
-	//	while ((s = error.readLine()) != null) {
-	//		System.err.println(s);
-	//	}
-
-
 }
