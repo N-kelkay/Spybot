@@ -38,7 +38,7 @@ public class EquationCommand extends ExecutableCommand{
 //				System.out.println(s);
 //			}
 			String output = input.readLine();
-
+			System.out.println("This is the output: " + output);
 
 			commands = new String[]{"python3", "./latex.py", "'" + output + "'"};
 			p = Runtime.getRuntime().exec(commands);
