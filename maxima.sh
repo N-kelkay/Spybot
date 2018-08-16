@@ -1,3 +1,3 @@
 #!/bin/bash
-open /Users/ddev/Desktop/Maxima/Launchers/Rmaxima.app
+maxima --very-quiet
 $1
