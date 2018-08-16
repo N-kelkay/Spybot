@@ -40,7 +40,7 @@ public class EquationCommand extends ExecutableCommand{
 			String output = input.readLine();
 			System.out.println("This is the output: " + output);
 
-			commands = new String[]{"python3", "./latex.py", "'" + output + "'"};
+			commands = new String[]{"python3", "./latex.py", output};
 			p = Runtime.getRuntime().exec(commands);
 			input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
