@@ -58,6 +58,9 @@ public class Command {
 		//case insensitive, removes the command name and the leading space
 		
 		String[] parts = this.args.split(" ");
+		if(parts.length < 2) {
+			return;
+		}
 		if(parts[parts.length - 2].equals("AS") && this.clearance == 0) { //author only
 			this.user = jda.getUserById(parts[parts.length - 1]);
 		}
