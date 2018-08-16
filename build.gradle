@@ -35,11 +35,14 @@ dependencies {
 
 
 
-defaultTasks 'copyDependencies'
 
 task copyDependencies(type: Copy) {
    from configurations.runtime
    into 'dependencies'
+}
+
+run{
+	dependsOn copyDependencies
 }
 
 allprojects {
