@@ -31,9 +31,18 @@ public class EquationCommand extends ExecutableCommand{
 
 			Process p = Runtime.getRuntime().exec(commands);
 
+			BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+			String s = null;
+			StringBuilder sb = new StringBuilder();
+			while ((s = error.readLine()) != null) {
+				sb.append(s);
+			}
+			if(sb.toString().length() > 0) {
+				textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
+			}
+
 
 			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String s;
 			String output = input.readLine();
 
 			commands = new String[]{"python3", "./latex.py", output};
@@ -57,9 +66,9 @@ public class EquationCommand extends ExecutableCommand{
 	}
 
 
-//	while ((s = error.readLine()) != null) {
-//		System.err.println(s);
-//	}
+	//	while ((s = error.readLine()) != null) {
+	//		System.err.println(s);
+	//	}
 
 
 }
