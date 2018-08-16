@@ -6,7 +6,7 @@ package com.tybug.spybot.commands;
  */
 public enum CommandType {
 	//Usable by anyone; help first, then homework commands, then commands that impact your user, then commands that impact the guuld, and then information commands
-	HELP, EQ, EVAL, ROLE, TIMEOUT, REMINDME, OPTIONS, EMOJI, CHANGELOG, SERVERINFO, STATS,
+	HELP, EVAL, LATEX, ROLE, TIMEOUT, REMINDME, OPTIONS, EMOJI, CHANGELOG, SERVERINFO, STATS,
 	//All the embed ones since they're quirky although technically usable by everyone
 	EMBED_ADD, EMBED_TITLE, EMBED_DESCRIPTION, EMBED_RESET, EMBED_CLEAR, EMBED_SEND,
 	//Usable by certain people other than author (may vary, but none are usable by anyone)

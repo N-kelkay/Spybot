@@ -29,7 +29,7 @@ public class EquationCommand extends ExecutableCommand{
 	@Override
 	public void execute() {
 		try {
-			if(type.equals(CommandType.EQ)) {
+			if(type.equals(CommandType.EVAL)) {
 				String result = maxima(this.args);
 				if(result == null) {
 					return;
@@ -37,7 +37,7 @@ public class EquationCommand extends ExecutableCommand{
 				latex(result);
 			}
 			
-			else if(type.equals(CommandType.EVAL)) {
+			else if(type.equals(CommandType.LATEX)) {
 				latex(args);
 			}
 

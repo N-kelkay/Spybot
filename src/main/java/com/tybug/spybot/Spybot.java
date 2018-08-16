@@ -248,14 +248,14 @@ public class Spybot extends ListenerAdapter
 		}
 
 		//homework commands
-		case EQ: {
-			ExecutableCommand executable = new EquationCommand(event, CommandType.EQ);
+		case EVAL: {
+			ExecutableCommand executable = new EquationCommand(event, CommandType.EVAL);
 			executable.execute();
 			return;
 		}
 		
-		case EVAL: {
-			ExecutableCommand executable = new EquationCommand(event, CommandType.EVAL);
+		case LATEX: {
+			ExecutableCommand executable = new EquationCommand(event, CommandType.LATEX);
 			executable.execute();
 			return;
 		}
