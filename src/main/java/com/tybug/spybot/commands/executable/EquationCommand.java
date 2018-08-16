@@ -31,6 +31,9 @@ public class EquationCommand extends ExecutableCommand{
 		try {
 			if(type.equals(CommandType.EQ)) {
 				String result = maxima(this.args);
+				if(result == null) {
+					return;
+				}
 				latex(result);
 			}
 			
@@ -50,19 +53,23 @@ public class EquationCommand extends ExecutableCommand{
 
 
 		Process p = Runtime.getRuntime().exec(commands);
-		BufferedReader error = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-		String s = null;
-		StringBuilder sb = new StringBuilder();
-		while ((s = error.readLine()) != null) {
-			sb.append(s);
-		}
-		if(sb.toString().length() > 0) {
-			textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
-		}
+		
 
 
 		BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		return input.readLine();
+		String s = null;
+		StringBuilder sb = new StringBuilder();
+		while ((s = input.readLine()) != null) { // errors output to stdout, perhaps becoause I'm using bash instead of executing from cmd line, but either way
+			sb.append(s);
+		}
+		
+		s = sb.toString();
+		if(s.contains("error") || s.contains("syntax")) {
+			textChannel.sendMessage("```fix\nFATAL ERROR:\n" + s + "\n```").queue();
+			return null;
+		}
+		
+		return s;
 	}
 
 	private void latex(String input) throws IOException {
@@ -70,13 +77,7 @@ public class EquationCommand extends ExecutableCommand{
 		Process p = Runtime.getRuntime().exec(commands);
 		BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		
-		String s = null;
-		StringBuilder sb = new StringBuilder();
-		if(sb.toString().length() > 0) {
-			textChannel.sendMessage("```fix\nFATAL ERROR:\n" + sb.toString() + "\n```").queue();
-		}
-		
-		s = inputStream.readLine();
+		String s = inputStream.readLine();
 
 		URL url = new URL(s);
 		BufferedImage image = ImageIO.read(url);
