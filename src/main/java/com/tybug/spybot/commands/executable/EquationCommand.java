@@ -60,7 +60,7 @@ public class EquationCommand extends ExecutableCommand{
 		String s = null;
 		StringBuilder sb = new StringBuilder();
 		while ((s = input.readLine()) != null) { // errors output to stdout, perhaps becoause I'm using bash instead of executing from cmd line, but either way
-			sb.append(s);
+			sb.append(s + "\n");
 		}
 		
 		s = sb.toString();
