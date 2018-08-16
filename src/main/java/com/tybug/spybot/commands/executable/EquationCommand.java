@@ -24,46 +24,46 @@ public class EquationCommand extends ExecutableCommand{
 
 	@Override
 	public void execute() {
-
-
-
-		String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
-		executeProcess(commands, true);
-
-		commands = new String[]{"/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5", "./latex.py", args};
-		executeProcess(commands, true);
-
-
-	}
-
-	private void executeProcess(String[] commands, boolean debug) {
-
 		try {
-			Runtime rt = Runtime.getRuntime();
-			Process proc = null;
-			proc = rt.exec(commands);
 
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-			String s = null;
-			while ((s = stdInput.readLine()) != null) {
-				if(debug) System.out.println(s);
-				URL url = new URL(s);
-				BufferedImage image = ImageIO.read(url);
-				ByteArrayOutputStream os = new ByteArrayOutputStream();
-				ImageIO.write(image, "png", os);
-				InputStream is = new ByteArrayInputStream(os.toByteArray());
-				textChannel.sendFile(is, OffsetDateTime.now().toString() + ".png").queue();
-			}
+			String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
 
-			BufferedReader error = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-			s = null;
-			while ((s = error.readLine()) != null) {
-				if(debug) System.err.println(s);
+
+			Process p = Runtime.getRuntime().exec(commands);
+
+
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String s;
+			while ((s = input.readLine()) != null) {
+				System.out.println(s);
 			}
+			String output = input.readLine();
+
+
+			commands = new String[]{"/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5", "./latex.py", output};
+			p = Runtime.getRuntime().exec(commands);
+			input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+			s = input.readLine();
+
+			URL url = new URL(s);
+			BufferedImage image = ImageIO.read(url);
+			ByteArrayOutputStream os = new ByteArrayOutputStream();
+			ImageIO.write(image, "png", os);
+			InputStream is = new ByteArrayInputStream(os.toByteArray());
+			textChannel.sendFile(is, OffsetDateTime.now().toString() + ".png").queue();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+
 	}
+
+
+//	while ((s = error.readLine()) != null) {
+//		System.err.println(s);
+//	}
+
 
 }
