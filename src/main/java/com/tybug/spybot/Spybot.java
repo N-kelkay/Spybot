@@ -259,11 +259,7 @@ public class Spybot extends ListenerAdapter
 			executable.execute();
 			return;
 		}
-		case SOL: {
-			ExecutableCommand executable = new CalcChatCommand(event);
-			executable.execute();
-			return;
-		}
+
 		//modifies your user (adds role/whatever)
 		case ROLE: { 
 			ExecutableCommand executable = new RoleCommand(event);
