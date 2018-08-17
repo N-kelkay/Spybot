@@ -14,6 +14,7 @@ import com.tybug.spybot.commands.ExecutableCommand;
 import com.tybug.spybot.commands.SnowChecker;
 import com.tybug.spybot.commands.Timeout;
 import com.tybug.spybot.commands.WaitingState;
+import com.tybug.spybot.commands.executable.CalcChatCommand;
 import com.tybug.spybot.commands.executable.ChangelogCommand;
 import com.tybug.spybot.commands.executable.EmbedAddCommand;
 import com.tybug.spybot.commands.executable.EmbedDescriptionCommand;
@@ -253,9 +254,13 @@ public class Spybot extends ListenerAdapter
 			executable.execute();
 			return;
 		}
-		
 		case LATEX: {
 			ExecutableCommand executable = new EquationCommand(event, CommandType.LATEX);
+			executable.execute();
+			return;
+		}
+		case SOL: {
+			ExecutableCommand executable = new CalcChatCommand(event);
 			executable.execute();
 			return;
 		}

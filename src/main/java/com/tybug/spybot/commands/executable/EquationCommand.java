@@ -51,10 +51,7 @@ public class EquationCommand extends ExecutableCommand{
 	private String maxima(String args) throws IOException {
 		String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
 
-
 		Process p = Runtime.getRuntime().exec(commands);
-		
-
 
 		BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String s = null;
