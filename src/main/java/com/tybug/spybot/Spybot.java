@@ -14,7 +14,6 @@ import com.tybug.spybot.commands.ExecutableCommand;
 import com.tybug.spybot.commands.SnowChecker;
 import com.tybug.spybot.commands.Timeout;
 import com.tybug.spybot.commands.WaitingState;
-import com.tybug.spybot.commands.executable.CalcChatCommand;
 import com.tybug.spybot.commands.executable.ChangelogCommand;
 import com.tybug.spybot.commands.executable.EmbedAddCommand;
 import com.tybug.spybot.commands.executable.EmbedDescriptionCommand;
