@@ -42,7 +42,7 @@ public class PMCommand extends ExecutableCommand {
 			if(message.getContentDisplay().startsWith(prefix + "pm")) { //so I can spook people and pm them through the bot
 				String[] parts = message.getContentRaw().split(" ");
 				String id = parts[1];
-				BotUtils.sendPrivateMessage(jda.getUserById(id), message.getContentRaw().replaceAll(prefix + "pm" + id, ""));
+				BotUtils.sendPrivateMessage(jda.getUserById(id), message.getContentRaw().replaceAll(prefix + "pm " + id, ""));
 				//send everything but the id and the command
 				BotUtils.check(message);
 			}
