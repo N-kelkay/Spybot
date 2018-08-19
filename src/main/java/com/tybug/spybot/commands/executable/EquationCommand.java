@@ -32,45 +32,49 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 			if(type.equals(CommandType.EVAL)) {
+				if(args.contains("file") || args.contains("save")) {
+					textChannel.sendMessage("Nice try.").queue();
+				}
+				
 				Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z])");
 				Matcher matcher = pattern.matcher(args);
 				
 				int count = 0; // Matcher#start is still dealing with the orignal string, but we keep adding * to it
 				while(matcher.find()) {
 					int offset = matcher.group(1).length();
-					System.out.println("Start: " + matcher.start());
+//					System.out.println("Start: " + matcher.start());
 					String before = args.substring(0, matcher.start() + offset + count);
-					System.out.println("Before: " + before);
+//					System.out.println("Before: " + before);
 					String after = args.substring(matcher.start() + offset + count);
-					System.out.println("After: " + after);
+//					System.out.println("After: " + after);
 					args = before + "*" + after;
-					System.out.println("Final: " + args);
+//					System.out.println("Final: " + args);
 					count++;
 				}
 				
-				pattern = Pattern.compile("([a-zA-Z]{2,})");
+				pattern = Pattern.compile("([xyz]{2,})");
 				matcher = pattern.matcher(args);
 				
 				count = 0;
-				System.out.println("Matching double letters");
+//				System.out.println("Matching letters");
 				while(matcher.find()) {
-					System.out.println("Start: " + matcher.start());
+//					System.out.println("Start: " + matcher.start());
 					String before = args.substring(0, matcher.start() + 1 + count);
-					System.out.println("Before: " + before);
+//					System.out.println("Before: " + before);
 					
 					
 					
 					String after = args.substring(matcher.start() + 1 + count);
-					System.out.println("After: " + after);
+//					System.out.println("After: " + after);
 
 					// subtract one first to account for the already multiplied number * variable previously, double because we're adding two every time
 					for(int i = 0; i < ((matcher.group(1).length() - 1) * 2) - 3; i+=2) {
 						after = after.substring(0, i + 1) + "*" + after.substring(i + 1);
-						System.out.println("After again: " + after);
+//						System.out.println("After again: " + after);
 						count++;
 					}
 					args = before + "*" + after;
-					System.out.println("Final: " + args);
+//					System.out.println("Final: " + args);
 					count++;
 				}
 				
