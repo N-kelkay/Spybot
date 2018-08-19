@@ -32,7 +32,7 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 			if(type.equals(CommandType.EVAL)) {
-				if(args.contains("file") || args.contains("save") || args.contains("eval_string")) {
+				if(args.contains("file") || args.contains("save") || args.contains("string")) {
 					textChannel.sendMessage("Nice try.").queue();
 					return;
 				}
