@@ -9,6 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.OffsetDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -30,7 +32,49 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 			if(type.equals(CommandType.EVAL)) {
-				String result = maxima(this.args);
+				Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z])");
+				Matcher matcher = pattern.matcher(args);
+				
+				int count = 0; // Matcher#start is still dealing with the orignal string, but we keep adding * to it
+				while(matcher.find()) {
+					int offset = matcher.group(1).length();
+					System.out.println("Start: " + matcher.start());
+					String before = args.substring(0, matcher.start() + offset + count);
+					System.out.println("Before: " + before);
+					String after = args.substring(matcher.start() + offset + count);
+					System.out.println("After: " + after);
+					args = before + "*" + after;
+					System.out.println("Final: " + args);
+					count++;
+				}
+				
+				pattern = Pattern.compile("([a-zA-Z]{2,})");
+				matcher = pattern.matcher(args);
+				
+				count = 0;
+				System.out.println("Matching double letters");
+				while(matcher.find()) {
+					System.out.println("Start: " + matcher.start());
+					String before = args.substring(0, matcher.start() + 1 + count);
+					System.out.println("Before: " + before);
+					
+					
+					
+					String after = args.substring(matcher.start() + 1 + count);
+					System.out.println("After: " + after);
+
+					// subtract one first to account for the already multiplied number * variable previously, double because we're adding two every time
+					for(int i = 0; i < ((matcher.group(1).length() - 1) * 2) - 3; i+=2) {
+						after = after.substring(0, i + 1) + "*" + after.substring(i + 1);
+						System.out.println("After again: " + after);
+						count++;
+					}
+					args = before + "*" + after;
+					System.out.println("Final: " + args);
+					count++;
+				}
+				
+				String result = maxima(args);
 				if(result == null) {
 					return;
 				}
@@ -48,8 +92,8 @@ public class EquationCommand extends ExecutableCommand{
 
 	}
 
-	private String maxima(String args) throws IOException {
-		String[] commands = new String[]{"./maxima.sh", "print(tex1(" + args + "))$"};
+	private String maxima(String equation) throws IOException {
+		String[] commands = new String[]{"./maxima.sh", "print(tex1(" + equation + "))$"};
 
 		Process p = Runtime.getRuntime().exec(commands);
 
