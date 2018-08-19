@@ -22,7 +22,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class EquationCommand extends ExecutableCommand{
 
 	private CommandType type;
-
+	private final String[] blacklist = {"with", "file", "save", "string", "open", "batch", "load", "path"};
 	public EquationCommand(MessageReceivedEvent event, CommandType type) {
 		super(event);
 		this.type = type;
@@ -32,7 +32,13 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 			if(type.equals(CommandType.EVAL)) {
-				if(args.contains("file") || args.contains("save") || args.contains("string") || args.contains("open")) {
+				
+				for(String s : blacklist) {
+					if(!args.contains(s)) {
+						continue;
+					}
+					
+					// File i/o stuff, prevent rce
 					textChannel.sendMessage("Nice try.").queue();
 					return;
 				}
