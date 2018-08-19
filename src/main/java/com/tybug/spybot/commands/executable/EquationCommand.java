@@ -22,7 +22,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 public class EquationCommand extends ExecutableCommand{
 
 	private CommandType type;
-	private final String[] blacklist = {"with", "file", "save", "string", "open", "batch", "load", "path"};
+	private final String[] blacklist = {"with", "file", "save", "string", "open", "batch", "load", "path", "write"};
 	public EquationCommand(MessageReceivedEvent event, CommandType type) {
 		super(event);
 		this.type = type;
