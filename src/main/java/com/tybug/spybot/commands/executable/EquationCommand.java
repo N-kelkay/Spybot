@@ -80,6 +80,7 @@ public class EquationCommand extends ExecutableCommand{
 				}
 				
 				String result = maxima(args);
+				System.out.println("Result: " + result);
 				if(result == null) {
 					return;
 				}
