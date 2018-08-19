@@ -34,6 +34,7 @@ public class EquationCommand extends ExecutableCommand{
 			if(type.equals(CommandType.EVAL)) {
 				if(args.contains("file") || args.contains("save")) {
 					textChannel.sendMessage("Nice try.").queue();
+					return;
 				}
 				
 				Pattern pattern = Pattern.compile("(\\d+)([a-zA-Z])");
