@@ -86,7 +86,7 @@ public class EquationCommand extends ExecutableCommand{
 				}
 				
 				String result = maxima(args);
-				System.out.println("Result: " + result);
+				System.out.println("Maxima result: " + result);
 				if(result == null) {
 					return;
 				}
@@ -131,7 +131,7 @@ public class EquationCommand extends ExecutableCommand{
 		BufferedReader inputStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		
 		String s = inputStream.readLine();
-
+		System.out.println("Latex result: " + s);
 		URL url = new URL(s);
 		BufferedImage image = ImageIO.read(url);
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
