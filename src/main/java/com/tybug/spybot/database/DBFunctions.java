@@ -280,6 +280,19 @@ public class DBFunctions {
 	//---------------------------------- MODIFY (REMOVE/ADD/SET) functions ---------------------------------------	
 	
 	
+	public static void setName(String id, String name) {
+		if(nameExists(name)) {
+			modifyDatabase("info", Arrays.asList(name, id), "UPDATE `NAMES` SET `NAME` = ? WHERE `ID` = ?");
+		}
+		
+		else {
+			modifyDatabase("info", Arrays.asList(id, name), "INSERT INTO `NAMES` (`ID`, `NAME`) VALUES (?, ?)");
+		}
+	}
+	
+	public static boolean nameExists(String name) { 
+		return conditionExists("info", "SELECT * FROM `NAMES` WHERE `ID` = \"" + name + "\"");
+	}
 	
 	public static void addOrUpdateColorRole(String userId, String roleId) {
 		if(userHasColorRole(userId)) {
