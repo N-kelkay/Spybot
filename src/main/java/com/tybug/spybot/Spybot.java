@@ -122,8 +122,9 @@ public class Spybot extends ListenerAdapter
 
 
 		Command command = new Command(event);
-		if(!command.isValid()) return; //No need to go through every case in the switch if the message isn't a command
-
+		if(!command.isValid()) {
+			return; //No need to go through every case in the switch if the message isn't a command
+		}
 
 		//Surround every switch with {} so they each have a different scope and variable names can be reused
 		switch(command.getCommand()) {
@@ -375,6 +376,7 @@ public class Spybot extends ListenerAdapter
 			return;
 		}
 		case NAME: {
+			System.out.println("name command");
 			ExecutableCommand executable = new NameCommand(event);
 			executable.execute();
 			return;

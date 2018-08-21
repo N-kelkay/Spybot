@@ -22,10 +22,10 @@ public class NameCommand extends ExecutableCommand {
 		String[] parts = args.split(" ");
 		String name = "";
 		for(int i = 1; i < parts.length; i++) {
-			name += parts[i];
+			name += parts[i] + " ";
 		}
 		DBFunctions.setName(parts[0], name);
-		SpybotUtils.updateNamePin(guild);
+		SpybotUtils.updateNamePin(jda.getGuildById(SpybotUtils.GUILD_BLAIR));
 		SpybotUtils.check(message);
 	}
 

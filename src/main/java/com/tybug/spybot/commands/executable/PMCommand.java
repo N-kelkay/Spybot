@@ -135,10 +135,8 @@ public class PMCommand extends ExecutableCommand {
 		for(Attachment a : message.getAttachments()) {
 			send += a.getUrl() + "\n";
 		}
-		BotUtils.sendPrivateMessage(jda.getUserById(SpybotUtils.AUTHOR), user.getId().equals(SpybotUtils.AUTHOR) ? "" : send); //only send if it's not the author
+		BotUtils.sendPrivateMessage(jda.getUserById(SpybotUtils.AUTHOR), user.getId().equals(SpybotUtils.AUTHOR) ? "" : send); //only send if it's not the author	
 		return;
-	
-	
 	}
 
 }

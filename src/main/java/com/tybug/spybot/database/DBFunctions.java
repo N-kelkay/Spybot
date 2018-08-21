@@ -45,7 +45,6 @@ public class DBFunctions {
 			c.commit();
 
 		} catch (Exception e) {
-			System.out.println("Exception caught on " + args.get(4));
 			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 		} finally {
 			close(stmt, c);
@@ -281,7 +280,7 @@ public class DBFunctions {
 	
 	
 	public static void setName(String id, String name) {
-		if(nameExists(name)) {
+		if(nameExists(id)) {
 			modifyDatabase("info", Arrays.asList(name, id), "UPDATE `NAMES` SET `NAME` = ? WHERE `ID` = ?");
 		}
 		
@@ -290,8 +289,8 @@ public class DBFunctions {
 		}
 	}
 	
-	public static boolean nameExists(String name) { 
-		return conditionExists("info", "SELECT * FROM `NAMES` WHERE `ID` = \"" + name + "\"");
+	public static boolean nameExists(String id) { 
+		return conditionExists("info", "SELECT * FROM `NAMES` WHERE `ID` = \"" + id + "\"");
 	}
 	
 	public static void addOrUpdateColorRole(String userId, String roleId) {
