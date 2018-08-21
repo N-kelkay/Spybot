@@ -24,6 +24,7 @@ import com.tybug.spybot.commands.executable.EmojiCommand;
 import com.tybug.spybot.commands.executable.EquationCommand;
 import com.tybug.spybot.commands.executable.LoghistoryCommand;
 import com.tybug.spybot.commands.executable.LogjoinsCommand;
+import com.tybug.spybot.commands.executable.NameCommand;
 import com.tybug.spybot.commands.executable.PMCommand;
 import com.tybug.spybot.commands.executable.RemindmeCommand;
 import com.tybug.spybot.commands.executable.RoleCommand;
@@ -258,7 +259,8 @@ public class Spybot extends ListenerAdapter
 			executable.execute();
 			return;
 		}
-
+		
+		
 		//modifies your user (adds role/whatever)
 		case ROLE: { 
 			ExecutableCommand executable = new RoleCommand(event);
@@ -372,6 +374,13 @@ public class Spybot extends ListenerAdapter
 			executable.execute();
 			return;
 		}
+		case NAME: {
+			ExecutableCommand executable = new NameCommand(event);
+			executable.execute();
+			return;
+		}
+
+		
 		default: //just ignore it, we won't ever get here anyway because isValid
 			break;
 		}

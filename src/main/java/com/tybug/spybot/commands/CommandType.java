@@ -12,7 +12,7 @@ public enum CommandType {
 	//Usable by certain people other than author (may vary, but none are usable by anyone)
 	UPDATEME,
 	//Usable by author (clearance < 1) only
-	LOGHISTORY, LOGJOINS, WRITEMESSAGES, STARTSNOW, STOPSNOW, PAUSE, UNPAUSE, STATUS,
+	LOGHISTORY, LOGJOINS, WRITEMESSAGES, STARTSNOW, STOPSNOW, PAUSE, UNPAUSE, STATUS, NAME,
 	//And of course, invalid
 	INVALID;
 	
