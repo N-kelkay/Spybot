@@ -193,8 +193,8 @@ public class Spybot extends ListenerAdapter
 			case "STATS":
 				SpybotUtils.sendMessage(textChannel, SpybotUtils.createHelpEmbed("stats"
 						, "Gives statistics for a particular user, or yourself if no user is specified",
-						"!serverinfo\n!serverinfo [@user]\n!serverinfo [id]",
-						"!serverinfo <@" + SpybotUtils.AUTHOR + ">\n!serverinfo " + SpybotUtils.AUTHOR));
+						"!stats\n!stats [@user]\n!serverinfo [id]",
+						"!stats <@" + SpybotUtils.AUTHOR + ">\n!stats " + SpybotUtils.AUTHOR));
 				return;
 
 			case "EMBED_ADD":

@@ -83,7 +83,7 @@ public class SpybotUtils {
 	public static final String ROLE_NERD = "474724055778328587";
 	public static final String ROLE_BOT = "389581209472335887";
 	public static final String ROLE_SCRUB = "474724542602805258";
-	public static final String ROLE_DOING_HOMEWORK = "431908409089064962";
+	public static final String ROLE_DOING_HOMEWORK = "482200856184225792";
 	public static final String ROLE_SNOW = "425818089251143690";
 	public static final String ROLE_FRESHIE = "420785461401878529";
 
