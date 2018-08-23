@@ -32,7 +32,7 @@ public class EquationCommand extends ExecutableCommand{
 	public void execute() {
 		try {
 			if(type.equals(CommandType.EVAL)) {
-				
+				args = args.replace("\\", "");
 				for(String s : blacklist) {
 					if(!args.contains(s)) {
 						continue;
