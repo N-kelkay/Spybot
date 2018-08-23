@@ -236,7 +236,7 @@ public class Spybot extends ListenerAdapter
 			case "commands":
 			default: 
 				String description = "help, role, timeout, remindme, updateme, changelog, serverinfo, stats,"
-						+ " embed_add, embed_title, embed_description, embed_send, embed_reset"
+						+ " embed add, embed title, embed description, embed send, embed reset"
 						+ "\n\nNote: Clearance 0 (admin) commands not listed";
 				EmbedBuilder eb = new EmbedBuilder();
 				SpybotUtils.sendMessage(textChannel, eb
@@ -312,6 +312,7 @@ public class Spybot extends ListenerAdapter
 		}
 		//embeds
 		case EMBED_ADD: {
+			System.out.println("embed add");
 			ExecutableCommand executable = new EmbedAddCommand(event);
 			executable.execute();
 			return;

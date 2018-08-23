@@ -78,9 +78,8 @@ public class Command {
 		String one = parts[0]; //only check first word
 		String two = "INVALID";
 		if(parts.length > 1) { //Always make it invalid unless the command is double worded
-			two = command.split(" ")[0] + "_" + command.split(" ")[1]; //check both words
+			two = command.split(" ")[0] + " " + command.split(" ")[1]; //check both words
 		}
-		
 		
 		EnumSet<CommandType> set = EnumSet.allOf(CommandType.class);
 		for(CommandType c : set) {
