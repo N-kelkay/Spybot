@@ -34,13 +34,13 @@ public class RemindmeCommand extends ExecutableCommand {
 			return;
 		} catch(NumberFormatException e) {
 			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Please provide a valid number in hours",
-					"See also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
+					"See also: " + SpybotUtils.BOT_PREFIX + "help remindme"));
 			return;
 		}
 		if(hours > 100 && clearance > 1) {
 			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Remindme is built for short term reminders. Anything longer than 100 hours is not allowed. "
 					+ "Please contact <@" + SpybotUtils.AUTHOR + "> if you would like a longer remind time"
-					, "See also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
+					, "See also: " + SpybotUtils.BOT_PREFIX + "help remindme"));
 			return;
 		}
 
