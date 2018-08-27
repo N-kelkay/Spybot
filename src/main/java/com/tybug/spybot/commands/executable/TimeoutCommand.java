@@ -23,7 +23,7 @@ public class TimeoutCommand extends ExecutableCommand {
 	public void execute() {
 		double hours = 0;
 		try {
-			hours = Double.parseDouble(this.getText());
+			hours = Double.parseDouble(args);
 		} catch(IndexOutOfBoundsException e) {
 			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Please specify an amount of time in hours!",
 					"See also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
@@ -34,9 +34,8 @@ public class TimeoutCommand extends ExecutableCommand {
 			return;
 		}
 		if(hours > 100) {
-			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Timeouts longer than 100 hours are not allowed. Please contact <@" + SpybotUtils.AUTHOR + "> if"
-					+ " you would like a longer timeout.",
-					"See also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
+			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Timeouts longer than 100 hours are not allowed", "Please contact <@" + SpybotUtils.AUTHOR + "> if"
+					+ " you would like a longer timeout.\nSee also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
 			return;
 		}
 		final Role hw = jda.getRoleById(SpybotUtils.ROLE_DOING_HOMEWORK);
@@ -63,7 +62,7 @@ public class TimeoutCommand extends ExecutableCommand {
 			BotUtils.sendPrivateMessage(member.getUser(), BotUtils.createEmbed("Your self imposed timeout is up!"
 					, "**These channels have had activity while you were away:**\n\n" + sb.toString())); //notify the user
 			Timeout.removeTimout(timeout); //remove the timeout so it doesn't keep getting triggered by onMessageRecieved
-		}, (long) hours, TimeUnit.HOURS);
+		}, (long) (hours * 60 * 60), TimeUnit.SECONDS);
 
 	}
 	
