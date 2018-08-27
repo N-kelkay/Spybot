@@ -33,7 +33,7 @@ public class TimeoutCommand extends ExecutableCommand {
 					"See also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
 			return;
 		}
-		if(hours > 100) {
+		if(Math.abs(hours) > 100) {
 			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Timeouts longer than 100 hours are not allowed", "Please contact <@" + SpybotUtils.AUTHOR + "> if"
 					+ " you would like a longer timeout.\nSee also: " + SpybotUtils.BOT_PREFIX + "help timeout"));
 			return;
