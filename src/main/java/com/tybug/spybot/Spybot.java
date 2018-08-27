@@ -401,7 +401,7 @@ public class Spybot extends ListenerAdapter
 		JDA jda = event.getJDA();
 		Member member = event.getMember();
 		TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
-		SpybotUtils.sendMessage(general, SpybotUtils.createEmbed("Welcome to the Blair Discord, " + member.getAsMention() + "!", "An alphabetized list of"
+		SpybotUtils.sendMessage(general, SpybotUtils.createEmbed("Welcome to the Blair Discord, " + member.getEffectiveName() + "!", "An alphabetized list of"
 				+ " real life names can be found pinned to"
 				+ " this channel (click the 'pin' with the red dot at the top of the screen) if you want to know who anyone is.\n\n"
 				+ "So that the pin can be kept automatically updated, please dm <@" + SpybotUtils.SPYBOT + "> (me) your real life name."));
