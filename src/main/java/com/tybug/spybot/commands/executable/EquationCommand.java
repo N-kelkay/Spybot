@@ -23,7 +23,7 @@ public class EquationCommand extends ExecutableCommand{
 
 	private CommandType type;
 	private final String[] blacklist = {"with", "file", "save", "string", "open",
-			"batch", "load", "path", "write", "read", "tex", "demo", "directory", "debug", "gnu", "plot", "wget"};
+			"batch", "load", "path", "write", "read", "tex", "demo", "directory", "debug", "gnu", "plot", "wget", "command"};
 	public EquationCommand(MessageReceivedEvent event, CommandType type) {
 		super(event);
 		this.type = type;
