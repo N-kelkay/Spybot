@@ -142,8 +142,9 @@ public class Spybot extends ListenerAdapter
 				SpybotUtils.sendMessage(textChannel, SpybotUtils.createHelpEmbed("role",
 						"Assigns you a role with the color specified.\n" +
 								"If you use the command while you still have a bot-created color role, it will be deleted"
-								+ " and overriden by your newly chosen role and color.", 
-								"!role [#color]", 
+								+ " and overriden by your newly chosen role and color.\n"
+								+ "If you do not provide a role name, it will default to your current username. Remember to keep the length within the role name character limit!", 
+								"!role [#color] [Role name (optional)]", 
 						"!role #de13fa"));
 				return;
 			case "TIMEOUT":

@@ -20,7 +20,7 @@ public class RoleCommand extends ExecutableCommand {
 	public void execute() {
 		Color c = null;
 		try {
-			c = BotUtils.hex2Rgb(args);
+			c = BotUtils.hex2Rgb(args.split(" ")[0]);
 		} catch (IndexOutOfBoundsException | NumberFormatException e) { //IOOB or bad input exception
 			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Please give an appropriate, 6 digit hex code for the color!",
 					"See also: " + SpybotUtils.BOT_PREFIX + "help role"));
@@ -31,7 +31,8 @@ public class RoleCommand extends ExecutableCommand {
 			guild.getRoleById(roleId).delete().queue();
 			DBFunctions.removeColorRole(user.getId()); // Delete from discord and remove from db
 		}
-		Role r = gc.createRole().setColor(c).setName(user.getName()).complete();
+		// Set role to the second arg if they give one; default to their username if not
+		Role r = gc.createRole().setColor(c).setName(args.split(" ").length > 1 ? args.split(" ")[1] : user.getName()).complete();
 		int pos = guild.getRoleById(SpybotUtils.ROLE_MOD).getPosition() - 1; //The spot right below mod
 		gc.modifyRolePositions().selectPosition(r).moveTo(pos).queue(); //so it displays their color instead of Magnet Nerd
 		gc.addSingleRoleToMember(guild.getMember(user), r).queue();
