@@ -21,7 +21,7 @@ public class EmbedSendCommand extends ExecutableCommand {
 		}
 		
 		if(message.getMentionedChannels().size() < 1) {
-			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Please provde a text cannel in your command!"));
+			BotUtils.sendMessage(textChannel, BotUtils.createEmbed("Please provide a text channel in your command!"));
 			return;
 		}
 		message.getMentionedChannels().forEach(c -> BotUtils.sendMessage(c, toSend));
