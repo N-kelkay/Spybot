@@ -79,7 +79,7 @@ public class SpybotUtils {
 
 
 	//Roles
-	public static final String ROLE_MOD = "474720248612782080";
+	public static final String ROLE_MOD = "488867255581540355";
 	public static final String ROLE_NERD = "474724055778328587";
 	public static final String ROLE_BOT = "389581209472335887";
 	public static final String ROLE_SCRUB = "474724542602805258";
