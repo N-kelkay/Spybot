@@ -45,7 +45,7 @@ public class SnowChecker {
 					compare = SpybotUtils.getEmergencyMessage(website);
 
 					try {
-						Thread.sleep(30000); //30 seconds
+						Thread.sleep(300000); //5 minutes
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
