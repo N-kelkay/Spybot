@@ -64,7 +64,7 @@ public class SpybotUtils {
 	public static final String CHANNEL_CREATIVECORNER = "474721503963774988";
 	public static final String CHANNEL_BOTS = "474722046786404371";
 	public static final String CHANNEL_BOTS2 = "474722140667641857";
-	public static final String CHANNEL_DYNOLOGS = "474998712041472000";
+	public static final String CHANNEL_MODTALK = "474998712041472000";
 	
 	public static final String CHANNEL_HOMEWORK = "474721513539502143";
 	public static final String CHANNEL_HOMEWORK2 = "474721524440498177";

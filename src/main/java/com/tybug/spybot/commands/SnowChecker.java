@@ -33,7 +33,7 @@ public class SnowChecker {
 		new Thread(() -> {
 			String website = "http://www.montgomeryschoolsmd.org/emergency/";
 			TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
-			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_DYNOLOGS);
+			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_MODTALK);
 
 			while(true) {
 				String parsed = SpybotUtils.getEmergencyMessage(website);
