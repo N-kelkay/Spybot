@@ -31,12 +31,13 @@ public class SnowChecker {
 
 
 		new Thread(() -> {
-			String website = "http://www.montgomeryschoolsmd.org/emergency/";
+			String website = "https://www.montgomeryschoolsmd.org";
 			TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
 			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_MODTALK);
 
 			while(true) {
 				String parsed = SpybotUtils.getEmergencyMessage(website);
+				System.out.println(parsed);
 				if(!pastAnnouncements.contains(parsed)) {
 					pastAnnouncements.add(parsed);
 				}
@@ -61,7 +62,7 @@ public class SnowChecker {
 								+ "but it was a past announcment!");
 						break;
 					}
-					BotUtils.sendMessage(general, jda.getRoleById(SpybotUtils.ROLE_SNOW).getAsMention() + parsed);
+					BotUtils.sendMessage(general, jda.getRoleById(SpybotUtils.ROLE_SNOW).getAsMention() + "```\n" + parsed + "\n```");
 				}
 				if(!pastAnnouncements.contains(parsed)) {
 					pastAnnouncements.add(parsed);

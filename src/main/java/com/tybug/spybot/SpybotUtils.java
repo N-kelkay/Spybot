@@ -409,7 +409,6 @@ public class SpybotUtils {
 			if(matcher.find()) {
 				parsed = matcher.group(1);
 				parsed = removeHTML(parsed);
-				parsed = "**" + parsed.replaceAll("MM", "M**\n\n```M") + "```";
 			}
 			return parsed;
 		}

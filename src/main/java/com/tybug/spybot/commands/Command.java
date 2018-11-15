@@ -70,6 +70,9 @@ public class Command {
 	}
 	
 	private static CommandType getCommandType(String command) {
+		if(command.length() == 0) {
+			return CommandType.INVALID;
+		}
 		if(!command.substring(0, 1).equals(SpybotUtils.BOT_PREFIX)) { //if the first character isn't the bot prefix, return invalid
 			return CommandType.INVALID;
 		}
