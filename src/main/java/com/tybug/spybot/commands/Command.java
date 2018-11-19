@@ -53,7 +53,7 @@ public class Command {
 			this.clearance = SpybotUtils.getClearance(member);
 			this.gc = this.guild.getController();
 		}
-		this.isValid = (this.command.equals(CommandType.INVALID) ? false : true); //Invalidd if the CommandType is invalid, otherwise not
+		this.isValid = (this.command.equals(CommandType.INVALID) ? false : true); //Invalid if the CommandType is invalid, otherwise not
 		this.args = m.getContentDisplay().replaceFirst("(?i)" + SpybotUtils.BOT_PREFIX + this.command.toString() + "\\s*", ""); //Match for either a trailing space or not
 		//case insensitive, removes the command name and the leading space
 		
@@ -63,6 +63,11 @@ public class Command {
 		}
 		if(parts[parts.length - 2].equals("AS") && this.clearance == 0) { //author only
 			this.user = jda.getUserById(parts[parts.length - 1]);
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < parts.length - 2; i++) {
+				sb.append(parts[i]);
+			}
+			this.args = sb.toString();
 		}
 	}
 	public CommandType getCommand() {
