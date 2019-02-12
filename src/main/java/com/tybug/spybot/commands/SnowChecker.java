@@ -21,7 +21,7 @@ public class SnowChecker {
 		this.jda = jda;
 		pastAnnouncements = new ArrayList<String>();
 	}
-	
+
 	/**
 	 * Checks the {@link http://www.montgomeryschoolsmd.org/emergency/} website every 30 seconds and pings @snow if the content under the "EMERGENCY HEADER"
 	 * was changed to a non-zero content (presumably, if they put a message up about closure or delay)
@@ -54,11 +54,11 @@ public class SnowChecker {
 				}
 
 				BotUtils.sendMessage(dynolog, "Previous:\n```" + parsed + "```\n\nCurrent:\n```" + compare + "```");
-
+				BotUtils.sendMessage(general, "<@&512037353657991181> bitch this better be school being delayed or imma kill liam: ```" + compare + "```");
 				parsed = SpybotUtils.getEmergencyMessage(website);
 				if(!parsed.equals("")) {
 					if(pastAnnouncements.contains(parsed)) {
-						BotUtils.sendMessage(dynolog, "<@216008405758771200> I would have posted this: " + parsed 
+						BotUtils.sendMessage(dynolog, "<@216008405758771200> I would have posted this: " + parsed
 								+ "but it was a past announcment!");
 						break;
 					}

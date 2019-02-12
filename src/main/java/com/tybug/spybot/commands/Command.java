@@ -22,7 +22,7 @@ import net.dv8tion.jda.core.managers.GuildController;
  */
 public class Command {
 	private boolean isValid;
-	
+
 	//for easy referencing in copy pasted commands, plus lots of this.get looks ugly
 	protected JDA jda;
 	protected Guild guild;
@@ -34,9 +34,9 @@ public class Command {
 	protected Message message;
 	protected String args;
 	protected int clearance;
-	
 
-	
+
+
 	public Command(MessageReceivedEvent event) { // Yuck..cache references everywhere... TODO restructure the fuck out of this..maybe time for a complete rewrite of entire bot
 		Message m = event.getMessage();
 		this.jda = event.getJDA();
@@ -46,9 +46,9 @@ public class Command {
 		this.user = event.getAuthor();
 		this.member = event.getMember();
 		this.command = getCommandType(m.getContentRaw());
-		
-		
-		
+
+
+
 		if(event.isFromType(ChannelType.TEXT)) {
 			this.clearance = SpybotUtils.getClearance(member);
 			this.gc = this.guild.getController();
@@ -56,7 +56,7 @@ public class Command {
 		this.isValid = (this.command.equals(CommandType.INVALID) ? false : true); //Invalid if the CommandType is invalid, otherwise not
 		this.args = m.getContentDisplay().replaceFirst("(?i)" + SpybotUtils.BOT_PREFIX + this.command.toString() + "\\s*", ""); //Match for either a trailing space or not
 		//case insensitive, removes the command name and the leading space
-		
+
 		String[] parts = this.args.split(" ");
 		if(parts.length < 2) {
 			return;
@@ -73,7 +73,7 @@ public class Command {
 	public CommandType getCommand() {
 		return command;
 	}
-	
+
 	private static CommandType getCommandType(String command) {
 		if(command.length() == 0) {
 			return CommandType.INVALID;
@@ -88,17 +88,17 @@ public class Command {
 		if(parts.length > 1) { //Always make it invalid unless the command is double worded
 			two = command.split(" ")[0] + " " + command.split(" ")[1]; //check both words
 		}
-		
+
 		EnumSet<CommandType> set = EnumSet.allOf(CommandType.class);
 		for(CommandType c : set) {
 			if(one.equals(c.toString()) || two.equals(c.toString())) {
 				return c;
 			}
 		}
-		
+
 		return CommandType.INVALID;
-	}	
-	
+	}
+
 	public boolean isValid() {
 		return isValid;
 	}

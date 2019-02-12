@@ -36,11 +36,11 @@ import net.dv8tion.jda.core.entities.User;
  * All generic helper methods that can or will reasonably be reused are found in {@link DiscordBot.util.BotUtils}
  * <p>
  * However, for convenience and ease of writing in {@link Spybot},
- *  many methods are included here that simply link an identical method in {@link DiscordBot.util.BotUtils}. 
+ *  many methods are included here that simply link an identical method in {@link DiscordBot.util.BotUtils}.
  * @author Liam DeVoe
  */
 public class SpybotUtils {
-	
+
 	//Inter-project helper finals
 	public static final MessageEmbed OPTIONS_MESSAGE_DEFAULT = BotUtils.createEmbed("Options Menu", "**User Specific:**"
 			+ "\n1: Timeout"
@@ -65,7 +65,7 @@ public class SpybotUtils {
 	public static final String CHANNEL_BOTS = "474722046786404371";
 	public static final String CHANNEL_BOTS2 = "474722140667641857";
 	public static final String CHANNEL_MODTALK = "474998712041472000";
-	
+
 	public static final String CHANNEL_HOMEWORK = "474721513539502143";
 	public static final String CHANNEL_HOMEWORK2 = "474721524440498177";
 	public static final String CHANNEL_RESOURCES = "474723314401542175";
@@ -84,7 +84,7 @@ public class SpybotUtils {
 	public static final String ROLE_BOT = "389581209472335887";
 	public static final String ROLE_SCRUB = "474724542602805258";
 	public static final String ROLE_DOING_HOMEWORK = "482200856184225792";
-	public static final String ROLE_SNOW = "425818089251143690";
+	public static final String ROLE_SNOW = "512037353657991181";
 	public static final String ROLE_FRESHIE = "420785461401878529";
 
 
@@ -93,7 +93,7 @@ public class SpybotUtils {
 
 	//Emojis
 	public static final String EMOJI_WARNING = "\u26A0";
-	
+
 	//Messages
 	public static final String MESSAGE_NAMES = "474998097550770176";
 
@@ -113,7 +113,7 @@ public class SpybotUtils {
 	 * Returns the clearance the given member has on the discord (what commands they are allowed to use) <p>
 	 * No Roles = 6 <p>
 	 * Scrub = 5 <p>
-	 * Nerd = 2 <p> 
+	 * Nerd = 2 <p>
 	 * Author = 0
 	 * @param member The member to check the clearance of
 	 * @return An int between 0 and 6 inclusive, reflecting their status on discord
@@ -160,9 +160,9 @@ public class SpybotUtils {
 
 
 
-	
-	
-	
+
+
+
 	/**
 	 * Inserts 24 entries corresponding to the 24 hours, where hours 24 and 1-11 have "AM" after them and hours 12 - 23 have "PM" after them
 	 * @param map The map to set up
@@ -183,13 +183,13 @@ public class SpybotUtils {
 			}
 		}
 	}
-	
-	
-	
-		
+
+
+
+
 	//---------------------------------------------------STATISTICS COMMAND----------------------------------------------------------------------
-	
-	
+
+
 	/**
 	 * Counts how many times any emoji has been used
 	 * @param raw A list of raw content strings, from Messages
@@ -211,7 +211,7 @@ public class SpybotUtils {
 
 
 		//---------------------------------------------------ACTIVITY GRAPHING----------------------------------------------------------------
-		
+
 
 		/**
 		 * Given a UTC timestamp, parses the UTC date and converts to EST
@@ -277,7 +277,7 @@ public class SpybotUtils {
 					break;
 				case 12:
 					dayESTI = 31;
-					break;	
+					break;
 				}
 			}
 
@@ -336,7 +336,7 @@ public class SpybotUtils {
 		}
 
 		/**
-		 * Makes a full map (String :: Integer) of Date :: 0, containing every day from 2017-06-02 (Creation of the Blair Discord) to now. 
+		 * Makes a full map (String :: Integer) of Date :: 0, containing every day from 2017-06-02 (Creation of the Blair Discord) to now.
 		 * @return Map<String, Integer> A map of DATE :: 0 as described above
 		 * @throws ParseException
 		 */
@@ -361,14 +361,14 @@ public class SpybotUtils {
 		}
 
 
-		
+
 
 
 
 
 		//---------------------------------------------------SNOW CHECKER--------------------------------------------------------------------------------------------
 		/**
-		 * Replaces all instances of certain strings, specifically those with html tags, with an empty string. 
+		 * Replaces all instances of certain strings, specifically those with html tags, with an empty string.
 		 * <p>
 		 * (Effectively gets rid of specific html tags, and some extraneous information)
 		 * @param s The string to strip of html
@@ -412,24 +412,24 @@ public class SpybotUtils {
 			}
 			return parsed;
 		}
-		
-		
-		
-		
+
+
+
+
 		/**
 		 * Sends a message with the specified content to the specified channel.
-		 * <p> 
+		 * <p>
 		 * If the message is over 2k characters long, it keeps on splitting right at 2k chars and sending the message
-		 * 
+		 *
 		 * @param channel The TextChannel to send the message to
 		 * @param content The raw content the message should contain
 		 */
 		public static void sendMessage (TextChannel channel, String content) {
 			BotUtils.sendMessage(channel, content);
 		}
-		
-		
-		
+
+
+
 		/**
 		 * Sends the specified embed to the specified channel.
 		 * @param channel The TextChannel to send the message to
@@ -438,9 +438,9 @@ public class SpybotUtils {
 		public static void sendMessage(TextChannel channel, MessageEmbed embed) {
 			BotUtils.sendMessage(channel, embed);
 		}
-		
-		
-		
+
+
+
 		/**
 		 * Makes an embed object with a title, and the color Color.Green (kinda brightish)
 		 * @param content The title of the embed
@@ -449,8 +449,8 @@ public class SpybotUtils {
 		public static MessageEmbed createEmbed(String content) {
 			return BotUtils.createEmbed(content, "");
 		}
-		
-		
+
+
 		/**
 		 * Makes an embed object with a title, description, and the color Color.Green (kinda brightish)
 		 * @param title The title of the embed
@@ -460,8 +460,8 @@ public class SpybotUtils {
 		public static MessageEmbed createEmbed(String title, String content) {
 			return BotUtils.createEmbed(title, content);
 		}
-		
-		
+
+
 		/**
 		 * Sends a private message with the specified content to the specified user
 		 * @param user The user to send the message to
@@ -470,8 +470,8 @@ public class SpybotUtils {
 		public static void sendPrivateMessage(User user, String content) {
 			BotUtils.sendPrivateMessage(user, content);
 		}
-		
-		
+
+
 		/**
 		 * Sends a private message with the specified embed to the specified user
 		 * @param user The user to send the message to
@@ -480,8 +480,8 @@ public class SpybotUtils {
 		public static void sendPrivateMessage(User user, MessageEmbed embed) {
 			BotUtils.sendPrivateMessage(user, embed);
 		}
-		
-		
+
+
 		/**
 		 * Adds the check emoji to the given message
 		 * @param message The message to add the check emoji to
@@ -489,9 +489,9 @@ public class SpybotUtils {
 		public static void check(Message message) {
 			BotUtils.check(message);
 		}
-		
-		
-		
+
+
+
 		/**
 		 * Makes a MessageEmbed modeled after a help message with the given contents
 		 * @param command The name of the command, without the prefix
@@ -503,9 +503,9 @@ public class SpybotUtils {
 		public static MessageEmbed createHelpEmbed(String command, String description, String varEx, String normalEx) {
 			return BotUtils.createHelpEmbed(command, description, varEx, normalEx);
 		}
-		
 
-		
+
+
 		/**
 		 * If a PEB with the given user is already contained in the static list, it returns that PEB. Otherwise, it creates a new one with the given user
 		 * and returns the newly created PEB.
@@ -515,13 +515,13 @@ public class SpybotUtils {
 		public static PrivateEmbedBuilder makeOrGetBuilder(User user) {
 			return BotUtils.makeOrGetBuilder(user);
 		}
-		
-		
+
+
 		 public static String createProgressBar(int length, int percentage) {
 			 return BotUtils.createProgressBar(length, percentage);
 		 }
 
-		
-		
-		
+
+
+
 }
