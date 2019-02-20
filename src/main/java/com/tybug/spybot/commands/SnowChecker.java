@@ -30,44 +30,45 @@ public class SnowChecker {
 	public void start() {
 
 
-		new Thread(() -> {
-			String website = "https://www.montgomeryschoolsmd.org";
-			TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
-			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_MODTALK);
+// 		new Thread(() -> {
+// 			String website = "https://www.montgomeryschoolsmd.org";
+// 			TextChannel general = jda.getTextChannelById(SpybotUtils.CHANNEL_GENERAL);
+// 			TextChannel dynolog = jda.getTextChannelById(SpybotUtils.CHANNEL_MODTALK);
 
-			while(true) {
-				String parsed = SpybotUtils.getEmergencyMessage(website);
-				System.out.println(parsed);
-				if(!pastAnnouncements.contains(parsed)) {
-					pastAnnouncements.add(parsed);
-				}
-				String compare = SpybotUtils.getEmergencyMessage(website);
-				while(parsed.equals(compare)) {
-					compare = SpybotUtils.getEmergencyMessage(website);
+// 			while(true) {
+// 				String parsed = SpybotUtils.getEmergencyMessage(website);
+// 				System.out.println(parsed);
+// 				if(!pastAnnouncements.contains(parsed)) {
+// 					pastAnnouncements.add(parsed);
+// 				}
+// 				String compare = SpybotUtils.getEmergencyMessage(website);
+// 				while(parsed.equals(compare)) {
+// 					compare = SpybotUtils.getEmergencyMessage(website);
 
-					try {
-						Thread.sleep(300000); //5 minutes
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
+// 					try {
+// 						Thread.sleep(300000); //5 minutes
+// 					} catch (InterruptedException e1) {
+// 						e1.printStackTrace();
+// 					}
 
-				}
+// 				}
 
-				BotUtils.sendMessage(dynolog, "Previous:\n```" + parsed + "```\n\nCurrent:\n```" + compare + "```");
-				BotUtils.sendMessage(general, "<@&512037353657991181> bitch this better be school being delayed or imma kill liam: ```" + compare + "```");
-				parsed = SpybotUtils.getEmergencyMessage(website);
-				if(!parsed.equals("")) {
-					if(pastAnnouncements.contains(parsed)) {
-						BotUtils.sendMessage(dynolog, "<@216008405758771200> I would have posted this: " + parsed
-								+ "but it was a past announcment!");
-						break;
-					}
-					BotUtils.sendMessage(general, jda.getRoleById(SpybotUtils.ROLE_SNOW).getAsMention() + "```\n" + parsed + "\n```");
-				}
-				if(!pastAnnouncements.contains(parsed)) {
-					pastAnnouncements.add(parsed);
-				}
-			}
-		}).start();
+// 				BotUtils.sendMessage(dynolog, "Previous:\n```" + parsed + "```\n\nCurrent:\n```" + compare + "```");
+// 				BotUtils.sendMessage(general, "<@&512037353657991181> bitch this better be school being delayed or imma kill liam: ```" + compare + "```");
+// 				parsed = SpybotUtils.getEmergencyMessage(website);
+// 				if(!parsed.equals("")) {
+// 					if(pastAnnouncements.contains(parsed)) {
+// 						BotUtils.sendMessage(dynolog, "<@216008405758771200> I would have posted this: " + parsed
+// 								+ "but it was a past announcment!");
+// 						break;
+// 					}
+// 					BotUtils.sendMessage(general, jda.getRoleById(SpybotUtils.ROLE_SNOW).getAsMention() + "```\n" + parsed + "\n```");
+// 				}
+// 				if(!pastAnnouncements.contains(parsed)) {
+// 					pastAnnouncements.add(parsed);
+// 				}
+// 			}
+// 		}).start();
+		return;	
 	}
 }
