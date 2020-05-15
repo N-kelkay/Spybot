@@ -58,7 +58,7 @@ import net.dv8tion.jda.core.events.user.UserTypingEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 /**
  * The main hub of the discord bot. Where events are handled, the bot instance itself is created, and most importantly commands are
- * interpreted and acted upon.
+ * interpreted and acted upon
  * @author Liam DeVoe
  */
 public class Spybot extends ListenerAdapter
